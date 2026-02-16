@@ -28,6 +28,7 @@ build/
 /data/
 data/
 sandbox/
+sample_data/
 *.sqlite
 *.db
 

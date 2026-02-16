@@ -1,0 +1,22 @@
+{
+  "name": "LifeWeaver Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-vscode-remote.remote-containers",
+    "ms-python.vscode-pylance"
+  ],
+  "forwardPorts": [
+    8000,
+    8888
+  ],
+  "postCreateCommand": "pip install -r requirements.txt || true",
+  "remoteUser": "vscode"
+}

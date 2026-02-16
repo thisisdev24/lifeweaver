@@ -1,0 +1,105 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env/
+.venv/
+venv/
+env/
+venv-*/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# pip cache
+pip-wheel-metadata/
+pip-log.txt
+
+# PyInstaller
+#  Usually these files are created by pyinstaller
+dist/
+build/
+
+# Data, local stores and sandbox
+/data/
+data/
+sandbox/
+*.sqlite
+*.db
+
+# Model files and heavy binaries
+models/
+*.pt
+*.bin
+*.ckpt
+*.safetensors
+*.onnx
+*.h5
+*.tflite
+
+# Large vector DB / index files
+faiss.index
+*.index
+milvus_data/
+weaviate_data/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.vscode-server/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Devcontainer and Docker
+.devcontainer/.local-workspace/
+.devcontainer/*.tar
+docker-compose.override.yml
+.env.local
+.env.*.local
+
+# Docker images / volumes (don't commit)
+docker-compose.override.yml
+**/Dockerfile.*
+
+# Secrets and tokens
+.env
+*.pem
+*.key
+*.crt
+secrets/
+credentials.json
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Tests/coverage
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# Generated docs
+docs/_build/
+
+# Archives and misc
+*.tar.gz
+*.zip
+
+# OS mounts (WSL/Windows specific)
+.mnt/
+wsl/

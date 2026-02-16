@@ -1,0 +1,17 @@
+
+fastapi
+uvicorn[standard]
+watchdog
+python-dotenv
+PyMuPDF
+pytesseract
+sentence-transformers
+faiss-cpu
+networkx
+sqlalchemy
+transformers
+torch
+python-multipart
+ics
+pytest
+black

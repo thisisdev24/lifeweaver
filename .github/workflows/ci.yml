@@ -1,0 +1,60 @@
+name: CI — lint & tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  test:
+    name: Lint & Test (PR)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            pip-cache-${{ runner.os }}-py${{ matrix.python-version }}-
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies (try requirements.txt, fallback to minimal)
+        run: |
+          # Try to install full requirements; if that fails (heavy libs), install minimal deps needed for lint+tests.
+          if [ -f requirements.txt ]; then
+            echo "Found requirements.txt — attempting to install full list..."
+            pip install -r requirements.txt || echo "Full install failed, falling back to minimal test deps"
+          fi
+          # Ensure minimal tooling is available for lint & tests
+          pip install black pytest
+
+      - name: Run Black (format check)
+        run: |
+          python -m black --version
+          # run black in check mode to fail CI on formatting issues
+          python -m black --check .
+
+      - name: Run pytest
+        run: |
+          python -m pytest -q
+
+      - name: Upload test results (JUnit)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: ./

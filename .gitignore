@@ -27,8 +27,8 @@ build/
 # Data, local stores and sandbox
 /data/
 data/
+sample-data/
 sandbox/
-/sample_data/
 *.sqlite
 *.db
 

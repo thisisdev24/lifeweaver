@@ -15,7 +15,6 @@ ics
 pytest
 black
 neo4j
-sqlite3
 openai-whisper
 pip
 setuptools

@@ -67,7 +67,7 @@ Open `http://localhost:8000/docs` to see API docs (if running uvicorn).
 ## 8) Using the CLI
 There are simple CLI scripts under `app/cli` (see files). Example:
 ```bash
-python -m app.cli.ingest_file --file sample_data/sample.pdf
+python -m app.cli.ingest_file --file sample-data/sample.pdf
 python -m app.cli.query --q "summarize project X"
 ```
 

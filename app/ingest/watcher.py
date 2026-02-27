@@ -41,6 +41,9 @@ class IngestHandler(FileSystemEventHandler):
         if not event.is_directory:
             process_file(event.dest_path)
 
+from app.db.database import Base, engine
+Base.metadata.create_all(bind=engine)
+
 
 def main():
     # ensure the watch directory exists before starting observer

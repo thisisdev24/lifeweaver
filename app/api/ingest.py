@@ -12,6 +12,7 @@
 import os
 import shutil
 import time
+from app.ingest.extractor import process_extraction
 
 WATCH_DIR = os.getenv("WATCH_DIR", "/workspaces/lifeweaver/data/watch")
 INGEST_DIR = os.getenv("INGEST_DIR", "/workspaces/lifeweaver/data/ingest")
@@ -49,3 +50,5 @@ def process_file(file_path):
 
     shutil.copy2(file_path, destination)
     print(f"Copied: {filename}")
+
+    process_extraction(destination)

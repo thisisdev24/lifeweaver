@@ -1,14 +1,3 @@
-# from fastapi import APIRouter, UploadFile, File
-# from app.ingest.watcher import save_uploaded_file
-
-# router = APIRouter()
-
-
-# @router.post("/file")
-# async def ingest_file(file: UploadFile = File(...)):
-#     path = await save_uploaded_file(file)
-#     return {"status": "ok", "path": path}
-
 import os
 import shutil
 import time
@@ -42,7 +31,9 @@ def process_file(file_path):
     destination = os.path.join(INGEST_DIR, filename)
 
     if not os.path.exists(INGEST_DIR):
-        raise Exception("Ingest directory does not exist. Create D:\\Lifeweaver\\ingest first.")
+        raise Exception(
+            "Ingest directory does not exist. Create D:\\Lifeweaver\\ingest first."
+        )
 
     if os.path.exists(destination):
         print(f"Skipped: {filename}")
